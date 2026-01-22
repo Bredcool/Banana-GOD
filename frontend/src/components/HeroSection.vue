@@ -41,7 +41,7 @@ const playMusicAndGo = () => {
                 </h1>
 
                 <p class="text-lg md:text-xl text-gray-200 mb-10">
-                    Pisang coklat yang disembah sejak zaman piramida.
+                    Pisang coklat yang dipersembahkan sejak zaman piramida kuno.
                     Sekarang hadir di perutmu.
                 </p>
 
@@ -49,7 +49,7 @@ const playMusicAndGo = () => {
                     <!-- BUTTON DENGAN MUSIK -->
                     <button @click="playMusicAndGo" class="bg-gold text-dark px-8 py-3 rounded-full font-semibold
                    hover:scale-105 transition">
-                        Lihat Menu Dewa
+                        Lihat Menu Kerajaan
                     </button>
                 </div>
             </div>

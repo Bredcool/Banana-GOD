@@ -2,7 +2,7 @@ export const menuList = [
     {
         id: 1,
         name: "God's Original",
-        desc: "Resep suci sejak zaman firaun",
+        desc: "Resep suci sejak zaman piramida kuno",
         price: "Rp 15.000"
     },
     // {
