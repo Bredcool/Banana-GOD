@@ -80,7 +80,7 @@ Semoga dewa pisang merestui`
                    transition
                    hover:bg-yellow-400
                    hover:shadow-lg">
-                        Persembahkan ke Dewa
+                        Pesan Sekarang
                     </a>
                 </div>
             </div>

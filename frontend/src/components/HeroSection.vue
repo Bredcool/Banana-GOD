@@ -41,7 +41,7 @@ const playMusicAndGo = () => {
                 </h1>
 
                 <p class="text-lg md:text-xl text-gray-200 mb-10">
-                    Pisang coklat yang dipersembahkan sejak zaman piramida kuno.
+                    Pisang coklat yang sudah ada sejak zaman piramida kuno.
                     Sekarang hadir di perutmu.
                 </p>
 
