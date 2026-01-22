@@ -10,7 +10,7 @@ const router = useRouter()
 const playMusicAndGo = () => {
     // kalau musik belum ada, buat
     if (!window.__bananaGodAudio) {
-        const audio = new Audio('/src/assets/egypt.mp3')
+        const audio = new Audio('/audio/egypt.mp3')
         audio.volume = 0.5
         audio.loop = true
         audio.play()
@@ -26,7 +26,7 @@ const playMusicAndGo = () => {
     <section class="relative w-screen h-screen overflow-hidden">
         <!-- Background -->
         <div class="absolute inset-0 bg-no-repeat bg-cover bg-center" style="
-        background-image: url('/src/assets/BANANA GOD.png');
+        background-image: url('/images/BANANA GOD.png');
         background-position: center 30%;
       "></div>
 

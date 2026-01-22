@@ -23,7 +23,7 @@ Semoga dewa pisang merestui`
     <section class="relative min-h-screen px-6 py-20 overflow-hidden text-white">
         <!-- Background -->
         <div class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('/src/assets/BOOK OF BANANA.png')"></div>
+            style="background-image: url('/images/BOOK OF BANANA.png')"></div>
 
         <!-- Overlay utama (lebih terang tapi aman) -->
         <div class="absolute inset-0
