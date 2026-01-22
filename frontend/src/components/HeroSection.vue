@@ -10,7 +10,7 @@ const router = useRouter()
 const playMusicAndGo = () => {
     // kalau musik belum ada, buat
     if (!window.__bananaGodAudio) {
-        const audio = new Audio('/audio/egypt.mp3')
+        const audio = new Audio('/audio/Arabian Nights.mp3')
         audio.volume = 0.5
         audio.loop = true
         audio.play()
