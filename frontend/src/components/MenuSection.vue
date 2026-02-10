@@ -24,6 +24,11 @@ const fadeOutAudio = (audio) => {
     }, 50)
 }
 
+// ⛔ PASTI MATI SAAT KELUAR HALAMAN MENU
+onBeforeRouteLeave(() => {
+    fadeOutAudio()
+})
+
 const goBack = () => {
     fadeOutAudio()
     router.push('/')
