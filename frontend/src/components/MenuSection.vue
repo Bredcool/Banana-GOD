@@ -1,8 +1,42 @@
 <script setup>
+import { useRouter, onBeforeRouteLeave } from 'vue-router'
 import { menuList } from '../data/menu'
 
+const router = useRouter()
 const phone = '6289693218083'
 
+/* =========================
+   🎧 FADE OUT MUSIC
+========================= */
+const stopMusicWithFade = () => {
+    const audio = window.__bananaGodAudio
+    if (!audio) return
+
+    const fadeInterval = setInterval(() => {
+        if (audio.volume > 0.05) {
+            audio.volume -= 0.05
+        } else {
+            audio.pause()
+            audio.currentTime = 0
+            window.__bananaGodAudio = null
+            clearInterval(fadeInterval)
+        }
+    }, 50)
+}
+
+// ⛔ PASTI MATI SAAT KELUAR HALAMAN MENU
+onBeforeRouteLeave(() => {
+    stopMusicWithFade()
+})
+
+const goBack = () => {
+    stopMusicWithFade()
+    router.push('/')
+}
+
+/* =========================
+   📲 WHATSAPP ORDER
+========================= */
 const orderText = (item) => {
     const text = `Halo BANANA GOD
 Aku ingin melakukan persembahan pesanan.
@@ -34,6 +68,20 @@ Semoga dewa pisang merestui`
 
         <!-- CONTENT -->
         <div class="relative z-10 max-w-6xl mx-auto">
+
+            <!-- 🔙 BACK BUTTON -->
+            <div class="mb-10">
+                <button @click="goBack" class="inline-flex items-center gap-2
+                 px-5 py-2 rounded-full
+                 border border-gold/50 text-gold
+                 backdrop-blur-sm
+                 transition
+                 hover:bg-gold hover:text-dark
+                 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                    ← Kembali ke Gerbang Dewa
+                </button>
+            </div>
+
             <!-- Title -->
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gold mb-4">
@@ -54,6 +102,7 @@ Semoga dewa pisang merestui`
                  hover:scale-[1.03]
                  hover:border-gold
                  hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
+
                     <!-- FOTO -->
                     <div class="h-48 overflow-hidden">
                         <img :src="item.image" :alt="item.name" class="w-full h-full object-cover
@@ -87,6 +136,7 @@ Semoga dewa pisang merestui`
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 </template>
