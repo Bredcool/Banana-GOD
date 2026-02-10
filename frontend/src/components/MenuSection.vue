@@ -6,9 +6,12 @@ const router = useRouter()
 const phone = '6289693218083'
 
 /* =========================
-   🎧 FADE OUT MUSIC
+   🎧 FADE OUT MUSIC (SAFE)
 ========================= */
-const fadeOutAudio = (audio) => {
+const fadeOutMusic = () => {
+    const audio = window.__bananaGodAudio
+    if (!audio) return
+
     let volume = audio.volume
 
     const fade = setInterval(() => {
@@ -18,20 +21,25 @@ const fadeOutAudio = (audio) => {
         } else {
             audio.pause()
             audio.currentTime = 0
-            audio.volume = 1
+            audio.volume = 0.5
             clearInterval(fade)
+            window.__bananaGodAudio = null
         }
     }, 50)
 }
 
-// ⛔ PASTI MATI SAAT KELUAR HALAMAN MENU
+/* ⛔ AUTO MATI SAAT KELUAR MENU */
 onBeforeRouteLeave(() => {
-    fadeOutAudio()
+    fadeOutMusic()
+    return true
 })
 
+/* 🔙 BACK BUTTON */
 const goBack = () => {
-    fadeOutAudio()
-    router.push('/')
+    fadeOutMusic()
+    setTimeout(() => {
+        router.push('/')
+    }, 400) // sesuai durasi fade
 }
 
 /* =========================
@@ -72,12 +80,12 @@ Semoga dewa pisang merestui`
             <!-- 🔙 BACK BUTTON -->
             <div class="mb-10">
                 <button @click="goBack" class="inline-flex items-center gap-2
-                 px-5 py-2 rounded-full
-                 border border-gold/50 text-gold
-                 backdrop-blur-sm
-                 transition
-                 hover:bg-gold hover:text-dark
-                 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+          px-5 py-2 rounded-full
+          border border-gold/50 text-gold
+          backdrop-blur-sm
+          transition
+          hover:bg-gold hover:text-dark
+          hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
                     ← Kembali
                 </button>
             </div>
@@ -96,18 +104,17 @@ Semoga dewa pisang merestui`
             <!-- Menu Cards -->
             <div class="grid gap-8 md:grid-cols-3">
                 <div v-for="item in menuList" :key="item.id" class="group relative overflow-hidden rounded-2xl
-                 border border-gold/30
-                 bg-black/50 backdrop-blur-sm
-                 transition
-                 hover:scale-[1.03]
-                 hover:border-gold
-                 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
-
+          border border-gold/30
+          bg-black/50 backdrop-blur-sm
+          transition
+          hover:scale-[1.03]
+          hover:border-gold
+          hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
                     <!-- FOTO -->
                     <div class="h-48 overflow-hidden">
                         <img :src="item.image" :alt="item.name" class="w-full h-full object-cover
-                     transition-transform duration-500
-                     group-hover:scale-110" />
+              transition-transform duration-500
+              group-hover:scale-110" />
                     </div>
 
                     <!-- ISI -->
@@ -125,12 +132,12 @@ Semoga dewa pisang merestui`
                         </p>
 
                         <a :href="orderText(item)" target="_blank" class="block text-center w-full
-                     bg-gold text-dark
-                     py-3 rounded-full
-                     font-semibold tracking-wide
-                     transition
-                     hover:bg-yellow-400
-                     hover:shadow-lg">
+              bg-gold text-dark
+              py-3 rounded-full
+              font-semibold tracking-wide
+              transition
+              hover:bg-yellow-400
+              hover:shadow-lg">
                             Pesan Sekarang
                         </a>
                     </div>
