@@ -78,7 +78,7 @@ Semoga dewa pisang merestui`
                  transition
                  hover:bg-gold hover:text-dark
                  hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-                    ← Kembali ke Gerbang Dewa
+                    ← Kembali
                 </button>
             </div>
 
