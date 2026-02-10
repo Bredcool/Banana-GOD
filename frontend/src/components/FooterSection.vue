@@ -4,7 +4,10 @@
             BANANA GOD
         </p>
         <p>
-            Pisang pilihan para dewa — dibuat oleh manusia biasa 🍌
+            Pisang pilihan para dewa — dibuat oleh manusia biasa
+        </p>
+        <p>
+            Rasa manis yang dibangkitkan kembali
         </p>
     </footer>
 </template>

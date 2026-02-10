@@ -40,15 +40,11 @@ const playMusicAndGo = () => {
                     {{ brand }}
                 </h1>
 
-                <p class="text-lg md:text-xl text-gray-200 mb-10">
+                <p class="text-lg md:text-xl text-gray-200 mb-5">
                     Sebuah pisang yang diolah dengan resep yang sudah ada sejak zaman piramida kuno.
                 </p>
 
-                <p class="text-lg md:text-xl text-gray-200 mb-10">
-                    Rasa manis yang dibangkitkan kembali.
-                </p>
-
-                <p class="text-lg md:text-xl text-gray-200 mb-10">
+                <p class="text-lg md:text-xl text-gray-200 mb-5">
                     Sekarang hadir di perutmu.
                 </p>
 
