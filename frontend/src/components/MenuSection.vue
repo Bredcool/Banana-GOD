@@ -60,7 +60,7 @@ Semoga dewa pisang merestui`
         </div>
 
         <!-- Overlay -->
-        <!-- <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/85"></div> -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/85"></div>
 
         <!-- Glow -->
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(255,180,80,0.18),transparent_60%)]">
