@@ -1,16 +1,19 @@
 <script setup>
-import { useRouter, onBeforeRouteLeave } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { menuList } from '../data/menu'
 
 const router = useRouter()
 const phone = '6289693218083'
 
 /* =========================
-   🎧 FADE OUT MUSIC (SAFE)
+   🎧 FADE OUT MUSIC
 ========================= */
-const fadeOutMusic = () => {
+const fadeOutMusic = (onDone) => {
     const audio = window.__bananaGodAudio
-    if (!audio) return
+    if (!audio) {
+        onDone && onDone()
+        return
+    }
 
     let volume = audio.volume
 
@@ -24,22 +27,16 @@ const fadeOutMusic = () => {
             audio.volume = 0.5
             clearInterval(fade)
             window.__bananaGodAudio = null
+            onDone && onDone()
         }
     }, 50)
 }
 
-/* ⛔ AUTO MATI SAAT KELUAR MENU */
-onBeforeRouteLeave(() => {
-    fadeOutMusic()
-    return true
-})
-
-/* 🔙 BACK BUTTON */
+/* 🔙 BACK BUTTON (SATU-SATUNYA NAVIGASI) */
 const goBack = () => {
-    fadeOutMusic()
-    setTimeout(() => {
+    fadeOutMusic(() => {
         router.push('/')
-    }, 400) // sesuai durasi fade
+    })
 }
 
 /* =========================
@@ -77,7 +74,7 @@ Semoga dewa pisang merestui`
         <!-- CONTENT -->
         <div class="relative z-10 max-w-6xl mx-auto">
 
-            <!-- 🔙 BACK BUTTON -->
+            <!-- 🔙 BACK -->
             <div class="mb-10">
                 <button @click="goBack" class="inline-flex items-center gap-2
           px-5 py-2 rounded-full
@@ -110,14 +107,12 @@ Semoga dewa pisang merestui`
           hover:scale-[1.03]
           hover:border-gold
           hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
-                    <!-- FOTO -->
                     <div class="h-48 overflow-hidden">
                         <img :src="item.image" :alt="item.name" class="w-full h-full object-cover
               transition-transform duration-500
               group-hover:scale-110" />
                     </div>
 
-                    <!-- ISI -->
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-gold mb-2">
                             {{ item.name }}
