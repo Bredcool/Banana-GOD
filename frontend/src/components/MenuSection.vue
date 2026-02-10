@@ -22,25 +22,21 @@ Semoga dewa pisang merestui`
 <template>
     <section class="relative min-h-screen px-6 py-20 overflow-hidden text-white">
         <!-- Background -->
-        <div class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('/images/BOOK OF BANANA.png')"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/BOOK OF BANANA.png')">
+        </div>
 
-        <!-- Overlay utama (lebih terang tapi aman) -->
-        <div class="absolute inset-0
-             bg-gradient-to-b
-             from-black/35
-             via-black/50
-             to-black/80"></div>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/85"></div>
 
-        <!-- Glow lilin (cinematic) -->
-        <div class="absolute inset-0
-             bg-[radial-gradient(circle_at_70%_40%,rgba(255,180,80,0.18),transparent_60%)]"></div>
+        <!-- Glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(255,180,80,0.18),transparent_60%)]">
+        </div>
 
         <!-- CONTENT -->
         <div class="relative z-10 max-w-6xl mx-auto">
             <!-- Title -->
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gold tracking-wide mb-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gold mb-4">
                     Menu Kerajaan
                 </h2>
                 <p class="text-gray-300 max-w-xl mx-auto">
@@ -51,37 +47,44 @@ Semoga dewa pisang merestui`
 
             <!-- Menu Cards -->
             <div class="grid gap-8 md:grid-cols-3">
-                <div v-for="item in menuList" :key="item.id" class="group relative rounded-2xl border border-gold/30
+                <div v-for="item in menuList" :key="item.id" class="group relative overflow-hidden rounded-2xl
+                 border border-gold/30
                  bg-black/50 backdrop-blur-sm
-                 p-6 transition
+                 transition
                  hover:scale-[1.03]
                  hover:border-gold
                  hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
-                    <!-- Name -->
-                    <h3 class="text-2xl font-bold text-gold mb-2">
-                        {{ item.name }}
-                    </h3>
+                    <!-- FOTO -->
+                    <div class="h-48 overflow-hidden">
+                        <img :src="item.image" :alt="item.name" class="w-full h-full object-cover
+                     transition-transform duration-500
+                     group-hover:scale-110" />
+                    </div>
 
-                    <!-- Desc -->
-                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                        {{ item.desc }}
-                    </p>
+                    <!-- ISI -->
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gold mb-2">
+                            {{ item.name }}
+                        </h3>
 
-                    <!-- Price -->
-                    <p class="text-xl font-extrabold mb-6">
-                        {{ item.price }}
-                    </p>
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            {{ item.desc }}
+                        </p>
 
-                    <!-- CTA -->
-                    <a :href="orderText(item)" target="_blank" class="block text-center w-full
-                   bg-gold text-dark
-                   py-3 rounded-full
-                   font-semibold tracking-wide
-                   transition
-                   hover:bg-yellow-400
-                   hover:shadow-lg">
-                        Pesan Sekarang
-                    </a>
+                        <p class="text-xl font-extrabold mb-6">
+                            {{ item.price }}
+                        </p>
+
+                        <a :href="orderText(item)" target="_blank" class="block text-center w-full
+                     bg-gold text-dark
+                     py-3 rounded-full
+                     font-semibold tracking-wide
+                     transition
+                     hover:bg-yellow-400
+                     hover:shadow-lg">
+                            Pesan Sekarang
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

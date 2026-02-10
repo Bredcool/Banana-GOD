@@ -1,9 +1,10 @@
 export const menuList = [
     {
         id: 1,
-        name: "God's Original",
-        desc: "Rasa manis yang dibangkitkan kembali",
-        price: "Rp 15.000"
+        name: "Choco Pharaoh",
+        desc: "Balutan coklat penuh kemewahan",
+        price: "Rp 18.000",
+        image: "/images/menu/choco-pharaoh.png"
     },
     // {
     //     id: 2,

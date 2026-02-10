@@ -4,7 +4,7 @@
             BANANA GOD
         </p>
         <p>
-            Pisang coklat para dewa — dibuat oleh manusia biasa 🍌
+            Pisang pilihan para dewa — dibuat oleh manusia biasa 🍌
         </p>
     </footer>
 </template>
