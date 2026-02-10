@@ -41,14 +41,13 @@ const playMusicAndGo = () => {
                 </h1>
 
                 <p class="text-lg md:text-xl text-gray-200 mb-4 leading-relaxed">
-                    Sebuah persembahan pisang suci,
-                    diracik dengan resep rahasia
-                    yang diwariskan sejak zaman piramida kuno.
+                    Sebuah persembahan pisang suci, diracik dengan resep rahasia
+                    yang diwariskan turun-temurun sejak zaman piramida kuno.
                 </p>
 
                 <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-                    Kini tak lagi tertulis di kitab,
-                    tapi siap diturunkan langsung ke perutmu.
+                    Kini hadir untuk mengisi rasa manis yang lama hilang,
+                    dan memuaskan jiwa yang lapar.
                 </p>
 
                 <div class="flex gap-4 justify-center flex-wrap">
@@ -56,7 +55,7 @@ const playMusicAndGo = () => {
                    transition
                    hover:scale-105
                    hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]">
-                        Masuki Kerajaan Pisang
+                        Lihat Menu Kerajaan
                     </button>
                 </div>
             </div>
