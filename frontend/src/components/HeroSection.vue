@@ -8,7 +8,6 @@ defineProps({
 const router = useRouter()
 
 const playMusicAndGo = () => {
-    // kalau musik belum ada, buat
     if (!window.__bananaGodAudio) {
         const audio = new Audio('/audio/Arabian Nights.mp3')
         audio.volume = 0.5
@@ -26,9 +25,10 @@ const playMusicAndGo = () => {
     <section class="relative w-screen h-screen overflow-hidden">
         <!-- Background -->
         <div class="absolute inset-0 bg-no-repeat bg-cover bg-center" style="
-        background-image: url('/images/BANANA GOD.png');
+        background-image: url('/images/Mesir Kuno 2.png');
         background-position: center 30%;
-      "></div>
+      ">
+        </div>
 
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/60"></div>
@@ -40,19 +40,23 @@ const playMusicAndGo = () => {
                     {{ brand }}
                 </h1>
 
-                <p class="text-lg md:text-xl text-gray-200 mb-5">
-                    Sebuah pisang yang diolah dengan resep yang sudah ada sejak zaman piramida kuno.
+                <p class="text-lg md:text-xl text-gray-200 mb-4 leading-relaxed">
+                    Sebuah persembahan pisang suci,
+                    diracik dengan resep rahasia
+                    yang diwariskan sejak zaman piramida kuno.
                 </p>
 
-                <p class="text-lg md:text-xl text-gray-200 mb-5">
-                    Sekarang hadir di perutmu.
+                <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                    Kini tak lagi tertulis di kitab,
+                    tapi siap diturunkan langsung ke perutmu.
                 </p>
 
                 <div class="flex gap-4 justify-center flex-wrap">
-                    <!-- BUTTON DENGAN MUSIK -->
                     <button @click="playMusicAndGo" class="bg-gold text-dark px-8 py-3 rounded-full font-semibold
-                   hover:scale-105 transition">
-                        Lihat Menu Kerajaan
+                   transition
+                   hover:scale-105
+                   hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]">
+                        Masuki Kerajaan Pisang
                     </button>
                 </div>
             </div>

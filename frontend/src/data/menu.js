@@ -4,7 +4,7 @@ export const menuList = [
         name: "Choco Pharaoh",
         desc: "Balutan coklat penuh kemewahan",
         price: "Rp 18.000",
-        image: "/images/menu/CHOCO PHARAOH.png"
+        image: "/images/CHOCO PHARAOH.png"
     },
     // {
     //     id: 2,

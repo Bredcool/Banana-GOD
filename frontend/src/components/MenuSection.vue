@@ -22,7 +22,7 @@ Semoga dewa pisang merestui`
 <template>
     <section class="relative min-h-screen px-6 py-20 overflow-hidden text-white">
         <!-- Background -->
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/BOOK OF BANANA.png')">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/Mesir Kuno 1.png')">
         </div>
 
         <!-- Overlay -->
