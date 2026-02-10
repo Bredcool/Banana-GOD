@@ -4,6 +4,15 @@ import FooterSection from '../components/FooterSection.vue'
 </script>
 
 <template>
-    <MenuSection />
-    <FooterSection />
+    <div class="page menu">
+        <MenuSection />
+        <FooterSection />
+    </div>
 </template>
+
+<style scoped>
+.page {
+    min-height: 100vh;
+    width: 100%;
+}
+</style>
