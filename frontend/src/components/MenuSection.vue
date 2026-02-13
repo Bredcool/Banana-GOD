@@ -1,23 +1,24 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
 import { menuList } from '../data/menu'
 
-const router = useRouter()
 const phone = '6289693218083'
 
+let audio = null
+let fadeInterval = null
+
 /* =========================
-   🎧 FADE OUT MUSIC
+   🎧 STOP MUSIC (FADE OUT)
 ========================= */
-const fadeOutMusic = (onDone) => {
-    const audio = window.__bananaGodAudio
-    if (!audio) {
-        onDone && onDone()
-        return
-    }
+const stopMusic = () => {
+    if (!audio) return
+
+    if (fadeInterval) return // cegah double trigger
 
     let volume = audio.volume
 
-    const fade = setInterval(() => {
+    fadeInterval = setInterval(() => {
         if (volume > 0.05) {
             volume -= 0.05
             audio.volume = volume
@@ -25,19 +26,33 @@ const fadeOutMusic = (onDone) => {
             audio.pause()
             audio.currentTime = 0
             audio.volume = 0.5
-            clearInterval(fade)
+            clearInterval(fadeInterval)
+            fadeInterval = null
             window.__bananaGodAudio = null
-            onDone && onDone()
         }
     }, 50)
 }
 
-/* 🔙 BACK BUTTON (SATU-SATUNYA NAVIGASI) */
-const goBack = () => {
-    fadeOutMusic(() => {
-        router.push('/')
-    })
-}
+/* =========================
+   🎧 AMBIL AUDIO GLOBAL
+========================= */
+onMounted(() => {
+    audio = window.__bananaGodAudio || null
+})
+
+/* =========================
+   🚪 STOP SAAT PINDAH ROUTE
+========================= */
+onBeforeRouteLeave(() => {
+    stopMusic()
+})
+
+/* =========================
+   🧹 SAFETY NET
+========================= */
+onBeforeUnmount(() => {
+    stopMusic()
+})
 
 /* =========================
    📲 WHATSAPP ORDER
@@ -60,6 +75,7 @@ Semoga dewa pisang merestui`
 
 <template>
     <section class="relative min-h-screen px-6 py-20 overflow-hidden text-white">
+
         <!-- Background -->
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/Mesir Kuno 1.png')">
         </div>
@@ -73,19 +89,6 @@ Semoga dewa pisang merestui`
 
         <!-- CONTENT -->
         <div class="relative z-10 max-w-6xl mx-auto">
-
-            <!-- 🔙 BACK -->
-            <div class="mb-10">
-                <button @click="goBack" class="inline-flex items-center gap-2
-          px-5 py-2 rounded-full
-          border border-gold/50 text-gold
-          backdrop-blur-sm
-          transition
-          hover:bg-gold hover:text-dark
-          hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-                    ← Kembali
-                </button>
-            </div>
 
             <!-- Title -->
             <div class="text-center mb-16">
@@ -107,6 +110,7 @@ Semoga dewa pisang merestui`
           hover:scale-[1.03]
           hover:border-gold
           hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
+
                     <div class="h-44 overflow-hidden">
                         <img :src="item.image" :alt="item.name" class="w-full h-full object-cover
               transition-transform duration-500
@@ -136,6 +140,7 @@ Semoga dewa pisang merestui`
                             Pesan Sekarang
                         </a>
                     </div>
+
                 </div>
             </div>
 
