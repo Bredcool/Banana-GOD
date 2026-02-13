@@ -107,7 +107,7 @@ Semoga dewa pisang merestui`
           hover:scale-[1.03]
           hover:border-gold
           hover:shadow-[0_0_40px_rgba(212,175,55,0.25)]">
-                    <div class="h-52 overflow-hidden">
+                    <div class="h-44 overflow-hidden">
                         <img :src="item.image" :alt="item.name" class="w-full h-full object-cover
               transition-transform duration-500
               group-hover:scale-110" />
