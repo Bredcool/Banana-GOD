@@ -98,12 +98,12 @@ const tombol_menu = async () => {
                     yang diwariskan turun-temurun sejak zaman piramida kuno.
                 </p>
 
-                <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                <p class="text-lg md:text-xl text-gray-200 mb-4 leading-relaxed">
                     Kini hadir untuk mengisi rasa manis yang lama hilang,
                     dan memuaskan jiwa yang lapar.
                 </p>
 
-                <div class="flex gap-4 justify-center flex-wrap">
+                <div class="flex gap-4 justify-center mb-4 flex-wrap">
                     <button @click="tombol_cerita" :disabled="isLoading" class="bg-gold text-dark px-8 py-3 rounded-full font-semibold
                    transition
                    hover:scale-105
