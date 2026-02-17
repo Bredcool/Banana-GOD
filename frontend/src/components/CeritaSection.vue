@@ -1,4 +1,55 @@
 <script setup>
+import { onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
+
+let audio = null
+let fadeInterval = null
+
+/* =========================
+   🎧 STOP MUSIC (FADE OUT)
+========================= */
+const stopMusic = () => {
+    if (!audio) return
+
+    if (fadeInterval) return // cegah double trigger
+
+    let volume = audio.volume
+
+    fadeInterval = setInterval(() => {
+        if (volume > 0.05) {
+            volume -= 0.05
+            audio.volume = volume
+        } else {
+            audio.pause()
+            audio.currentTime = 0
+            audio.volume = 0.5
+            clearInterval(fadeInterval)
+            fadeInterval = null
+            window.__bananaGodAudio = null
+        }
+    }, 50)
+}
+
+/* =========================
+   🎧 AMBIL AUDIO GLOBAL
+========================= */
+onMounted(() => {
+    audio = window.__bananaGodAudio || null
+})
+
+/* =========================
+   🚪 STOP SAAT PINDAH ROUTE
+========================= */
+onBeforeRouteLeave(() => {
+    stopMusic()
+})
+
+/* =========================
+   🧹 SAFETY NET
+========================= */
+onBeforeUnmount(() => {
+    stopMusic()
+})
 </script>
 
 <template>
