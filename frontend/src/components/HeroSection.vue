@@ -9,7 +9,38 @@ defineProps({
 const router = useRouter()
 const isLoading = ref(false)
 
-const playMusicAndGo = async () => {
+const tombol_cerita = async () => {
+    if (isLoading.value) return
+    isLoading.value = true
+
+    let audio = window.__bananaGodAudio
+
+    try {
+        // kalau belum ada audio global → buat baru
+        if (!audio) {
+            audio = new Audio('/audio/egypt.mp3')
+            audio.volume = 0.5
+            audio.loop = true
+
+            await audio.play()
+            window.__bananaGodAudio = audio
+        }
+
+        // kalau sudah ada tapi paused → play lagi
+        else if (audio.paused) {
+            await audio.play()
+        }
+
+        await router.push('/cerita')
+    } catch (err) {
+        console.warn('Audio play gagal:', err)
+        router.push('/cerita')
+    } finally {
+        isLoading.value = false
+    }
+}
+
+const tombol_menu = async () => {
     if (isLoading.value) return
     isLoading.value = true
 
@@ -73,7 +104,17 @@ const playMusicAndGo = async () => {
                 </p>
 
                 <div class="flex gap-4 justify-center flex-wrap">
-                    <button @click="playMusicAndGo" :disabled="isLoading" class="bg-gold text-dark px-8 py-3 rounded-full font-semibold
+                    <button @click="tombol_cerita" :disabled="isLoading" class="bg-gold text-dark px-8 py-3 rounded-full font-semibold
+                   transition
+                   hover:scale-105
+                   hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]
+                   disabled:opacity-50 disabled:cursor-not-allowed">
+                        Baca Cerita Legenda
+                    </button>
+                </div>
+
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <button @click="tombol_menu" :disabled="isLoading" class="bg-gold text-dark px-8 py-3 rounded-full font-semibold
                    transition
                    hover:scale-105
                    hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]
