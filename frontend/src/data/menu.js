@@ -11,7 +11,7 @@ export const menuList = [
         name: "SACRED TIRAMISU",
         desc: "Krim tiramisu lembut pilihan para dewa",
         price: "Rp 18.000",
-        image: "/images/SACRED TIRAMISU 1.png"
+        image: "/images/SACRED TIRAMISU 2.png"
     },
     // {
     //     id: 3,
